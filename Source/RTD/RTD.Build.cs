@@ -8,7 +8,7 @@ public class RTD : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HexGrids", "FastNoiseGenerator", "FastNoise" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HexGrids", "FastNoiseGenerator", "FastNoise", "GASCompanion", "GameplayAbilities", "GameplayTasks", "GameplayTags" });
 
 		PublicIncludePaths.AddRange(new string[] { "HexGrids/Public", "HexGrids/Classes" });
 
