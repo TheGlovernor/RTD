@@ -54,6 +54,18 @@ public:
     FGameplayAttributeData MaxItems = 0.0;
     ATTRIBUTE_ACCESSORS(UTowerAttributeSet, MaxItems)    
 
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_BuyValue)
+    FGameplayAttributeData BuyValue = 0.0;
+    ATTRIBUTE_ACCESSORS(UTowerAttributeSet, BuyValue)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_UpgradeValue)
+    FGameplayAttributeData UpgradeValue = 0.0;
+    ATTRIBUTE_ACCESSORS(UTowerAttributeSet, UpgradeValue)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_SellValue)
+    FGameplayAttributeData SellValue = 0.0;
+    ATTRIBUTE_ACCESSORS(UTowerAttributeSet, SellValue)
+
 protected:
     
     UFUNCTION()
@@ -79,6 +91,15 @@ protected:
 
     UFUNCTION()
     virtual void OnRep_MaxItems(const FGameplayAttributeData& OldMaxItems);
+
+    UFUNCTION()
+    virtual void OnRep_BuyValue(const FGameplayAttributeData& OldBuyValue);
+
+    UFUNCTION()
+    virtual void OnRep_UpgradeValue(const FGameplayAttributeData& OldUpgradeValue);
+
+    UFUNCTION()
+    virtual void OnRep_SellValue(const FGameplayAttributeData& OldSellValue);
 	
 	
 };

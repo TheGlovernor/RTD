@@ -71,6 +71,12 @@ void UTowerAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
     DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, CritChance, COND_None, REPNOTIFY_Always);
     
     DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, MaxItems, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, BuyValue, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, UpgradeValue, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, SellValue, COND_None, REPNOTIFY_Always);
 }
 
 void UTowerAttributeSet::OnRep_Level(const FGameplayAttributeData& OldLevel)
@@ -111,4 +117,19 @@ void UTowerAttributeSet::OnRep_CritChance(const FGameplayAttributeData& OldCritC
 void UTowerAttributeSet::OnRep_MaxItems(const FGameplayAttributeData& OldMaxItems)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, MaxItems, OldMaxItems);
+}
+
+void UTowerAttributeSet::OnRep_BuyValue(const FGameplayAttributeData& OldBuyValue)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, BuyValue, OldBuyValue);
+}
+
+void UTowerAttributeSet::OnRep_UpgradeValue(const FGameplayAttributeData& OldUpgradeValue)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, UpgradeValue, OldUpgradeValue);
+}
+
+void UTowerAttributeSet::OnRep_SellValue(const FGameplayAttributeData& OldSellValue)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, SellValue, OldSellValue);
 }
