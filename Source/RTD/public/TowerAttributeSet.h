@@ -46,9 +46,21 @@ public:
     FGameplayAttributeData MaxTargets = 1.0;
     ATTRIBUTE_ACCESSORS(UTowerAttributeSet, MaxTargets)    
     
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_EffectPower)
+    FGameplayAttributeData EffectPower = 0.0;
+    ATTRIBUTE_ACCESSORS(UTowerAttributeSet, EffectPower)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_EffectChance)
+    FGameplayAttributeData EffectChance = 0.0;
+    ATTRIBUTE_ACCESSORS(UTowerAttributeSet, EffectChance)
+
     UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_CritChance)
     FGameplayAttributeData CritChance = 0.0;
-    ATTRIBUTE_ACCESSORS(UTowerAttributeSet, CritChance)    
+    ATTRIBUTE_ACCESSORS(UTowerAttributeSet, CritChance)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_CritX)
+    FGameplayAttributeData CritX = 0.0;
+    ATTRIBUTE_ACCESSORS(UTowerAttributeSet, CritX)    
     
     UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_MaxItems)
     FGameplayAttributeData MaxItems = 0.0;
@@ -87,7 +99,16 @@ protected:
     virtual void OnRep_MaxTargets(const FGameplayAttributeData& OldMaxTargets);
 
     UFUNCTION()
+    virtual void OnRep_EffectPower(const FGameplayAttributeData& OldEffectPower);
+    
+    UFUNCTION()
+    virtual void OnRep_EffectChance(const FGameplayAttributeData& OldEffectChance);
+
+    UFUNCTION()
     virtual void OnRep_CritChance(const FGameplayAttributeData& OldCritChance);
+
+    UFUNCTION()
+    virtual void OnRep_CritX(const FGameplayAttributeData& OldCritX);
 
     UFUNCTION()
     virtual void OnRep_MaxItems(const FGameplayAttributeData& OldMaxItems);

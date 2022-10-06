@@ -68,7 +68,13 @@ void UTowerAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
     
     DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, MaxTargets, COND_None, REPNOTIFY_Always);
     
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, EffectPower, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, EffectChance, COND_None, REPNOTIFY_Always);
+
     DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, CritChance, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, CritX, COND_None, REPNOTIFY_Always);
     
     DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, MaxItems, COND_None, REPNOTIFY_Always);
 
@@ -109,9 +115,27 @@ void UTowerAttributeSet::OnRep_MaxTargets(const FGameplayAttributeData& OldMaxTa
     GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, MaxTargets, OldMaxTargets);
 }
 
+void UTowerAttributeSet::OnRep_EffectPower(const FGameplayAttributeData& OldEffectPower)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, EffectPower, OldEffectPower);
+
+}
+
+void UTowerAttributeSet::OnRep_EffectChance(const FGameplayAttributeData& OldEffectChance)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, EffectChance, OldEffectChance);
+
+}
+
 void UTowerAttributeSet::OnRep_CritChance(const FGameplayAttributeData& OldCritChance)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, CritChance, OldCritChance);
+
+}
+
+void UTowerAttributeSet::OnRep_CritX(const FGameplayAttributeData& OldCritX)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, CritX, OldCritX);
 }
 
 void UTowerAttributeSet::OnRep_MaxItems(const FGameplayAttributeData& OldMaxItems)
