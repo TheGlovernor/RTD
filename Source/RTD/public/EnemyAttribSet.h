@@ -94,6 +94,42 @@ public:
     FGameplayAttributeData DamTakenModifier = 0.0;
     ATTRIBUTE_ACCESSORS(UEnemyAttribSet, DamTakenModifier)
 
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_Visible)
+    FGameplayAttributeData Visible = 1.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, Visible)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_Hexed)
+    FGameplayAttributeData Hexed = 0.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, Hexed)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_PhysicalModifier)
+    FGameplayAttributeData PhysicalModifier = 1.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, PhysicalModifier)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_BleedModifier)
+    FGameplayAttributeData BleedModifier = 1.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, BleedModifier)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_FireModifier)
+    FGameplayAttributeData FireModifier = 1.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, FireModifier)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_FrostModifier)
+    FGameplayAttributeData FrostModifier = 1.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, FrostModifier)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_ShockModifier)
+    FGameplayAttributeData ShockModifier = 1.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, ShockModifier)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_BlessedModifier)
+    FGameplayAttributeData BlessedModifier = 1.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, BlessedModifier)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_CursedModifier)
+    FGameplayAttributeData CursedModifier = 1.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, CursedModifier)
+
 protected:
     
     UFUNCTION()
@@ -150,4 +186,30 @@ protected:
     UFUNCTION()
     virtual void OnRep_DamTakenModifier(const FGameplayAttributeData& OldDamTakenModifier);
 	
+    UFUNCTION()
+    virtual void OnRep_Visible(const FGameplayAttributeData& OldVisible);
+
+    UFUNCTION()
+    virtual void OnRep_Hexed(const FGameplayAttributeData& OldHexed);
+
+    UFUNCTION()
+    virtual void OnRep_PhysicalModifier(const FGameplayAttributeData& OldPhysicalModifier);
+
+    UFUNCTION()
+    virtual void OnRep_BleedModifier(const FGameplayAttributeData& OldBleedModifier);
+
+    UFUNCTION()
+    virtual void OnRep_FireModifier(const FGameplayAttributeData& OldFireModifier);
+
+    UFUNCTION()
+    virtual void OnRep_FrostModifier(const FGameplayAttributeData& OldFrostModifier);
+
+    UFUNCTION()
+    virtual void OnRep_ShockModifier(const FGameplayAttributeData& OldShockModifier);
+
+    UFUNCTION()
+    virtual void OnRep_BlessedModifier(const FGameplayAttributeData& OldBlessedModifier);
+
+    UFUNCTION()
+    virtual void OnRep_CursedModifier(const FGameplayAttributeData& OldCursedModifier);
 };

@@ -54,6 +54,10 @@ public:
     FGameplayAttributeData EffectChance = 0.0;
     ATTRIBUTE_ACCESSORS(UTowerAttributeSet, EffectChance)
 
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_EffectDuration)
+    FGameplayAttributeData EffectDuration = 0.0;
+    ATTRIBUTE_ACCESSORS(UTowerAttributeSet, EffectDuration)
+
     UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_CritChance)
     FGameplayAttributeData CritChance = 0.0;
     ATTRIBUTE_ACCESSORS(UTowerAttributeSet, CritChance)
@@ -77,6 +81,26 @@ public:
     UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_SellValue)
     FGameplayAttributeData SellValue = 0.0;
     ATTRIBUTE_ACCESSORS(UTowerAttributeSet, SellValue)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_TargetHidden)
+    FGameplayAttributeData TargetHidden = 0.0;
+    ATTRIBUTE_ACCESSORS(UTowerAttributeSet, TargetHidden)    
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_Reloads)
+    FGameplayAttributeData Reloads = 0.0;
+    ATTRIBUTE_ACCESSORS(UTowerAttributeSet, Reloads)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_MagSize)
+    FGameplayAttributeData MagSize = 0.0;
+    ATTRIBUTE_ACCESSORS(UTowerAttributeSet, MagSize)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_ReloadInterval)
+    FGameplayAttributeData ReloadInterval = 0.0;
+    ATTRIBUTE_ACCESSORS(UTowerAttributeSet, ReloadInterval)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_AmmoConsumption)
+    FGameplayAttributeData AmmoConsumption = 0.0;
+    ATTRIBUTE_ACCESSORS(UTowerAttributeSet, AmmoConsumption)
 
 protected:
     
@@ -103,6 +127,9 @@ protected:
     
     UFUNCTION()
     virtual void OnRep_EffectChance(const FGameplayAttributeData& OldEffectChance);
+    
+    UFUNCTION()
+    virtual void OnRep_EffectDuration(const FGameplayAttributeData& OldEffectDuration);
 
     UFUNCTION()
     virtual void OnRep_CritChance(const FGameplayAttributeData& OldCritChance);
@@ -121,6 +148,19 @@ protected:
 
     UFUNCTION()
     virtual void OnRep_SellValue(const FGameplayAttributeData& OldSellValue);
-	
-	
+
+    UFUNCTION()
+    virtual void OnRep_TargetHidden(const FGameplayAttributeData& OldTargetHidden);
+
+    UFUNCTION()
+    virtual void OnRep_Reloads(const FGameplayAttributeData& OldReloads);
+
+    UFUNCTION()
+    virtual void OnRep_MagSize(const FGameplayAttributeData& OldMagSize);
+
+    UFUNCTION()
+    virtual void OnRep_ReloadInterval(const FGameplayAttributeData& OldReloadInterval);
+
+    UFUNCTION()
+    virtual void OnRep_AmmoConsumption(const FGameplayAttributeData& OldAmmoConsumption);
 };

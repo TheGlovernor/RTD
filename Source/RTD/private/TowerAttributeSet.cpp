@@ -72,6 +72,8 @@ void UTowerAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
 
     DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, EffectChance, COND_None, REPNOTIFY_Always);
 
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, EffectDuration, COND_None, REPNOTIFY_Always);
+
     DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, CritChance, COND_None, REPNOTIFY_Always);
 
     DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, CritX, COND_None, REPNOTIFY_Always);
@@ -83,6 +85,16 @@ void UTowerAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
     DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, UpgradeValue, COND_None, REPNOTIFY_Always);
 
     DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, SellValue, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, TargetHidden, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, Reloads, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, MagSize, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, ReloadInterval, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, AmmoConsumption, COND_None, REPNOTIFY_Always);
 }
 
 void UTowerAttributeSet::OnRep_Level(const FGameplayAttributeData& OldLevel)
@@ -127,6 +139,12 @@ void UTowerAttributeSet::OnRep_EffectChance(const FGameplayAttributeData& OldEff
 
 }
 
+void UTowerAttributeSet::OnRep_EffectDuration(const FGameplayAttributeData& OldEffectDuration)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, EffectDuration, OldEffectDuration);
+
+}
+
 void UTowerAttributeSet::OnRep_CritChance(const FGameplayAttributeData& OldCritChance)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, CritChance, OldCritChance);
@@ -156,4 +174,29 @@ void UTowerAttributeSet::OnRep_UpgradeValue(const FGameplayAttributeData& OldUpg
 void UTowerAttributeSet::OnRep_SellValue(const FGameplayAttributeData& OldSellValue)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, SellValue, OldSellValue);
+}
+
+void UTowerAttributeSet::OnRep_TargetHidden(const FGameplayAttributeData& OldTargetHidden)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, TargetHidden, OldTargetHidden);
+}
+
+void UTowerAttributeSet::OnRep_Reloads(const FGameplayAttributeData& OldReloads)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, Reloads, OldReloads);
+}
+
+void UTowerAttributeSet::OnRep_MagSize(const FGameplayAttributeData& OldMagSize)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, MagSize, OldMagSize);
+}
+
+void UTowerAttributeSet::OnRep_ReloadInterval(const FGameplayAttributeData& OldReloadInterval)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, ReloadInterval, OldReloadInterval);
+}
+
+void UTowerAttributeSet::OnRep_AmmoConsumption(const FGameplayAttributeData& OldAmmoConsumption)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, AmmoConsumption, OldAmmoConsumption);
 }

@@ -120,6 +120,24 @@ void UEnemyAttribSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, HomeDamageAmount, COND_None, REPNOTIFY_Always);
 
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, DamTakenModifier, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, Visible, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, Hexed, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, PhysicalModifier, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, BleedModifier , COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, FireModifier, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, FrostModifier, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, ShockModifier, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, BlessedModifier, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, CursedModifier, COND_None, REPNOTIFY_Always);
 }
 
 void UEnemyAttribSet::OnRep_Flesh(const FGameplayAttributeData& OldFlesh)
@@ -210,4 +228,49 @@ void UEnemyAttribSet::OnRep_HomeDamageAmount(const FGameplayAttributeData& OldHo
 void UEnemyAttribSet::OnRep_DamTakenModifier(const FGameplayAttributeData& OldDamTakenModifier)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, DamTakenModifier, OldDamTakenModifier);
+}
+
+void UEnemyAttribSet::OnRep_Visible(const FGameplayAttributeData& OldVisible)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, Visible, OldVisible);
+}
+
+void UEnemyAttribSet::OnRep_Hexed(const FGameplayAttributeData& OldHexed)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, Hexed, OldHexed);
+}
+
+void UEnemyAttribSet::OnRep_PhysicalModifier(const FGameplayAttributeData& OldPhysicalModifier)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, PhysicalModifier, OldPhysicalModifier);
+}
+
+void UEnemyAttribSet::OnRep_BleedModifier(const FGameplayAttributeData& OldBleedModifier)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, BleedModifier, OldBleedModifier);
+}
+
+void UEnemyAttribSet::OnRep_FireModifier(const FGameplayAttributeData& OldFireModifier)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, FireModifier, OldFireModifier);
+}
+
+void UEnemyAttribSet::OnRep_FrostModifier(const FGameplayAttributeData& OldFrostModifier)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, FrostModifier, OldFrostModifier);
+}
+
+void UEnemyAttribSet::OnRep_ShockModifier(const FGameplayAttributeData& OldShockModifier)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, ShockModifier, OldShockModifier);
+}
+
+void UEnemyAttribSet::OnRep_BlessedModifier(const FGameplayAttributeData& OldBlessedModifier)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, BlessedModifier, OldBlessedModifier);
+}
+
+void UEnemyAttribSet::OnRep_CursedModifier(const FGameplayAttributeData& OldCursedModifier)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, CursedModifier, OldCursedModifier);
 }
