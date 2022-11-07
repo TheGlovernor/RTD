@@ -1,0 +1,4 @@
+[/Script/GameplayTags.GameplayTagsList]
+GameplayTagList=(Tag="Default",DevComment="Default tag, item will not work if it has this tag assigned")
+GameplayTagList=(Tag="Item/Default",DevComment="")
+
