@@ -130,6 +130,10 @@ public:
     FGameplayAttributeData CursedModifier = 1.0;
     ATTRIBUTE_ACCESSORS(UEnemyAttribSet, CursedModifier)
 
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_ItemDropChance)
+    FGameplayAttributeData ItemDropChance = 1.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, ItemDropChance)
+
 protected:
     
     UFUNCTION()
@@ -212,4 +216,8 @@ protected:
 
     UFUNCTION()
     virtual void OnRep_CursedModifier(const FGameplayAttributeData& OldCursedModifier);
+
+    UFUNCTION()
+    virtual void OnRep_ItemDropChance(const FGameplayAttributeData& OldItemDropChance);
+
 };

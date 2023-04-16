@@ -138,6 +138,8 @@ void UEnemyAttribSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, BlessedModifier, COND_None, REPNOTIFY_Always);
 
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, CursedModifier, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, ItemDropChance, COND_None, REPNOTIFY_Always);
 }
 
 void UEnemyAttribSet::OnRep_Flesh(const FGameplayAttributeData& OldFlesh)
@@ -273,4 +275,9 @@ void UEnemyAttribSet::OnRep_BlessedModifier(const FGameplayAttributeData& OldBle
 void UEnemyAttribSet::OnRep_CursedModifier(const FGameplayAttributeData& OldCursedModifier)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, CursedModifier, OldCursedModifier);
+}
+
+void UEnemyAttribSet::OnRep_ItemDropChance(const FGameplayAttributeData& OldItemDropChance)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, ItemDropChance, OldItemDropChance);
 }
