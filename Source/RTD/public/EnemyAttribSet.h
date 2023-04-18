@@ -82,6 +82,10 @@ public:
     FGameplayAttributeData MoveSpeed = 0.0;
     ATTRIBUTE_ACCESSORS(UEnemyAttribSet, MoveSpeed)    
     
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_SpeedModifier)
+    FGameplayAttributeData SpeedModifier = 0.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, SpeedModifier)
+    
     UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_KillValue)
     FGameplayAttributeData KillValue = 0.0;
     ATTRIBUTE_ACCESSORS(UEnemyAttribSet, KillValue)    
@@ -180,6 +184,9 @@ protected:
 
     UFUNCTION()
     virtual void OnRep_MoveSpeed(const FGameplayAttributeData& OldMoveSpeed);
+    
+    UFUNCTION()
+    virtual void OnRep_SpeedModifier(const FGameplayAttributeData& OldSpeedModifier);
 
     UFUNCTION()
     virtual void OnRep_KillValue(const FGameplayAttributeData& OldKillValue);

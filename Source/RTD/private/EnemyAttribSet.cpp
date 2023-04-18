@@ -114,6 +114,8 @@ void UEnemyAttribSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, MaxDarkMagic, COND_None, REPNOTIFY_Always);
     
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, MoveSpeed, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, SpeedModifier, COND_None, REPNOTIFY_Always);
     
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, KillValue, COND_None, REPNOTIFY_Always);
     
@@ -215,6 +217,11 @@ void UEnemyAttribSet::OnRep_MaxDarkMagic(const FGameplayAttributeData& OldMaxDar
 void UEnemyAttribSet::OnRep_MoveSpeed(const FGameplayAttributeData& OldMoveSpeed)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, MoveSpeed, OldMoveSpeed);
+}
+
+void UEnemyAttribSet::OnRep_SpeedModifier(const FGameplayAttributeData& OldSpeedModifier)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, SpeedModifier, OldSpeedModifier);
 }
 
 void UEnemyAttribSet::OnRep_KillValue(const FGameplayAttributeData& OldKillValue)
