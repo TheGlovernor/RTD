@@ -71,6 +71,8 @@ void UStatusEffect::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLif
     DOREPLIFETIME_CONDITION_NOTIFY(UStatusEffect, EntangleChance, COND_None, REPNOTIFY_Always);
     
     DOREPLIFETIME_CONDITION_NOTIFY(UStatusEffect, EntangleDuration, COND_None, REPNOTIFY_Always);
+    
+    DOREPLIFETIME_CONDITION_NOTIFY(UStatusEffect, TimeDialation, COND_None, REPNOTIFY_Always);
 }
 
 void UStatusEffect::OnRep_BleedChance(const FGameplayAttributeData& OldBleedChance)
@@ -111,4 +113,9 @@ void UStatusEffect::OnRep_EntangleChance(const FGameplayAttributeData& OldEntang
 void UStatusEffect::OnRep_EntangleDuration(const FGameplayAttributeData& OldEntangleDuration)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UStatusEffect, EntangleDuration, OldEntangleDuration);
+}
+
+void UStatusEffect::OnRep_TimeDialation(const FGameplayAttributeData& OldTimeDialation)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UStatusEffect, TimeDialation, OldTimeDialation);
 }

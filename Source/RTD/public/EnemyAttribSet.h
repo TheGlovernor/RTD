@@ -138,6 +138,14 @@ public:
     FGameplayAttributeData ItemDropChance = 1.0;
     ATTRIBUTE_ACCESSORS(UEnemyAttribSet, ItemDropChance)
 
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_EntangledPower)
+    FGameplayAttributeData EntangledPower = 0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, EntangledPower)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_EntangledBleed)
+    FGameplayAttributeData EntangledBleed = 0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, EntangledBleed)
+
 protected:
     
     UFUNCTION()
@@ -226,5 +234,11 @@ protected:
 
     UFUNCTION()
     virtual void OnRep_ItemDropChance(const FGameplayAttributeData& OldItemDropChance);
+
+    UFUNCTION()
+    virtual void OnRep_EntangledPower(const FGameplayAttributeData& OldEntangledPower);
+
+    UFUNCTION()
+    virtual void OnRep_EntangledBleed(const FGameplayAttributeData& OldEntangledBleed);
 
 };

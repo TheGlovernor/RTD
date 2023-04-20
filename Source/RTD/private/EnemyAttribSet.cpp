@@ -142,6 +142,10 @@ void UEnemyAttribSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, CursedModifier, COND_None, REPNOTIFY_Always);
 
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, ItemDropChance, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, EntangledPower, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, EntangledBleed, COND_None, REPNOTIFY_Always);
 }
 
 void UEnemyAttribSet::OnRep_Flesh(const FGameplayAttributeData& OldFlesh)
@@ -287,4 +291,14 @@ void UEnemyAttribSet::OnRep_CursedModifier(const FGameplayAttributeData& OldCurs
 void UEnemyAttribSet::OnRep_ItemDropChance(const FGameplayAttributeData& OldItemDropChance)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, ItemDropChance, OldItemDropChance);
+}
+
+void UEnemyAttribSet::OnRep_EntangledPower(const FGameplayAttributeData& OldEntangledPower)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, EntangledPower, OldEntangledPower);
+}
+
+void UEnemyAttribSet::OnRep_EntangledBleed(const FGameplayAttributeData& OldEntangledBleed)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, EntangledBleed, OldEntangledBleed);
 }

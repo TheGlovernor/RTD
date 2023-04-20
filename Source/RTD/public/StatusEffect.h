@@ -52,7 +52,11 @@ public:
     
     UPROPERTY(BlueprintReadOnly, Category = "Status", ReplicatedUsing = OnRep_EntangleDuration)
     FGameplayAttributeData EntangleDuration = 0.0;
-    ATTRIBUTE_ACCESSORS(UStatusEffect, EntangleDuration)    
+    ATTRIBUTE_ACCESSORS(UStatusEffect, EntangleDuration)        
+    
+    UPROPERTY(BlueprintReadOnly, Category = "Status", ReplicatedUsing = OnRep_TimeDialation)
+    FGameplayAttributeData TimeDialation = 1;
+    ATTRIBUTE_ACCESSORS(UStatusEffect, TimeDialation)
 
 protected:
     
@@ -79,6 +83,9 @@ protected:
 
     UFUNCTION()
     virtual void OnRep_EntangleDuration(const FGameplayAttributeData& OldEntangleDuration);
+
+    UFUNCTION()
+    virtual void OnRep_TimeDialation(const FGameplayAttributeData& OldTimeDialation);
 	
 	
 };

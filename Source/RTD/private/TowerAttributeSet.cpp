@@ -95,6 +95,42 @@ void UTowerAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
     DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, ReloadInterval, COND_None, REPNOTIFY_Always);
 
     DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, AmmoConsumption, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, AmmoRegenRate, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, TimeSlow, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, FrostSlow, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, FrostDuration, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, FrostChance, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, EntangleSlow, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, EntangleDuration, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, EntangleChance, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, EntanglePower, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, BleedPower, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, BleedChance, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, EngulfPower, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, EngulfChance, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, StunDuration, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, StunChance, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, SpotPower, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, SpotDuration, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, ProjectileSpeed, COND_None, REPNOTIFY_Always);
 }
 
 void UTowerAttributeSet::OnRep_Level(const FGameplayAttributeData& OldLevel)
@@ -199,4 +235,94 @@ void UTowerAttributeSet::OnRep_ReloadInterval(const FGameplayAttributeData& OldR
 void UTowerAttributeSet::OnRep_AmmoConsumption(const FGameplayAttributeData& OldAmmoConsumption)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, AmmoConsumption, OldAmmoConsumption);
+}
+
+void UTowerAttributeSet::OnRep_AmmoRegenRate(const FGameplayAttributeData& OldAmmoRegenRate)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, AmmoRegenRate, OldAmmoRegenRate);
+}
+
+void UTowerAttributeSet::OnRep_TimeSlow(const FGameplayAttributeData& OldTimeSlow)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, TimeSlow , OldTimeSlow);
+}
+
+void UTowerAttributeSet::OnRep_FrostSlow(const FGameplayAttributeData& OldFrostSlow)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, FrostSlow, OldFrostSlow);
+}
+
+void UTowerAttributeSet::OnRep_FrostDuration(const FGameplayAttributeData& OldFrostDuration)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, FrostDuration, OldFrostDuration);
+}
+
+void UTowerAttributeSet::OnRep_FrostChance(const FGameplayAttributeData& OldFrostChance)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, FrostChance, OldFrostChance);
+}
+
+void UTowerAttributeSet::OnRep_EntangleSlow(const FGameplayAttributeData& OldEntangleSlow)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, EntangleSlow, OldEntangleSlow);
+}
+
+void UTowerAttributeSet::OnRep_EntangleDuration(const FGameplayAttributeData& OldEntangleDuration)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, EntangleDuration, OldEntangleDuration);
+}
+
+void UTowerAttributeSet::OnRep_EntangleChance(const FGameplayAttributeData& OldEntangleChance)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, EntangleChance, OldEntangleChance);
+}
+
+void UTowerAttributeSet::OnRep_EntanglePower(const FGameplayAttributeData& OldEntanglePower)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, EntanglePower, OldEntanglePower);
+}
+
+void UTowerAttributeSet::OnRep_BleedPower(const FGameplayAttributeData& OldBleedPower)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, BleedPower, OldBleedPower);
+}
+
+void UTowerAttributeSet::OnRep_BleedChance(const FGameplayAttributeData& OldBleedChance)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, BleedChance, OldBleedChance);
+}
+
+void UTowerAttributeSet::OnRep_EngulfPower(const FGameplayAttributeData& OldEngulfPower)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, EngulfPower, OldEngulfPower);
+}
+
+void UTowerAttributeSet::OnRep_EngulfChance(const FGameplayAttributeData& OldEngulfChance)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, EngulfChance, OldEngulfChance);
+}
+
+void UTowerAttributeSet::OnRep_StunDuration(const FGameplayAttributeData& OldStunDuration)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, StunDuration, OldStunDuration);
+}
+
+void UTowerAttributeSet::OnRep_StunChance(const FGameplayAttributeData& OldStunChance)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, StunChance, OldStunChance);
+}
+
+void UTowerAttributeSet::OnRep_SpotPower(const FGameplayAttributeData& OldSpotPower)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, SpotPower, OldSpotPower);
+}
+
+void UTowerAttributeSet::OnRep_SpotDuration(const FGameplayAttributeData& OldSpotDuration)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, SpotDuration, OldSpotDuration);
+}
+
+void UTowerAttributeSet::OnRep_ProjectileSpeed(const FGameplayAttributeData& OldProjectileSpeed)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, ProjectileSpeed, OldProjectileSpeed);
 }
