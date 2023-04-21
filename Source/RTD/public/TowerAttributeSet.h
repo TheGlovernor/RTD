@@ -174,6 +174,14 @@ public:
     FGameplayAttributeData ProjectileSpeed = 0.0;
     ATTRIBUTE_ACCESSORS(UTowerAttributeSet, ProjectileSpeed)
 
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_ExplosionRadius)
+    FGameplayAttributeData ExplosionRadius = 0.0;
+    ATTRIBUTE_ACCESSORS(UTowerAttributeSet, ExplosionRadius)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_BountyMultiplier)
+    FGameplayAttributeData BountyMultiplier = 0.0;
+    ATTRIBUTE_ACCESSORS(UTowerAttributeSet, BountyMultiplier)
+
 protected:
     
     UFUNCTION()
@@ -289,4 +297,10 @@ protected:
 
     UFUNCTION()
     virtual void OnRep_ProjectileSpeed(const FGameplayAttributeData& OldProjectileSpeed);
+
+    UFUNCTION()
+    virtual void OnRep_ExplosionRadius(const FGameplayAttributeData& OldExplosionRadius);
+
+    UFUNCTION()
+    virtual void OnRep_BountyMultiplier(const FGameplayAttributeData& OldBountyMultiplier);
 };
