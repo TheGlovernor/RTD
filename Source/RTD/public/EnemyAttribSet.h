@@ -146,6 +146,10 @@ public:
     FGameplayAttributeData EntangledBleed = 0;
     ATTRIBUTE_ACCESSORS(UEnemyAttribSet, EntangledBleed)
 
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_Offspring)
+    FGameplayAttributeData Offspring = 0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, Offspring)
+
 protected:
     
     UFUNCTION()
@@ -240,5 +244,8 @@ protected:
 
     UFUNCTION()
     virtual void OnRep_EntangledBleed(const FGameplayAttributeData& OldEntangledBleed);
+
+    UFUNCTION()
+    virtual void OnRep_Offspring(const FGameplayAttributeData& OldOffspring);
 
 };

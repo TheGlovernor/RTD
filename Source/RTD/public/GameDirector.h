@@ -26,6 +26,10 @@ public:
     FGameplayAttributeData EnemyScalar = 1.0;
     ATTRIBUTE_ACCESSORS(UGameDirector, EnemyScalar)
         
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_SplitChance)
+    FGameplayAttributeData SplitChance = 1.0;
+    ATTRIBUTE_ACCESSORS(UGameDirector, SplitChance)
+        
     UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_MultipleRollChance)
     FGameplayAttributeData MultipleRollChance = 0.0;
     ATTRIBUTE_ACCESSORS(UGameDirector, MultipleRollChance)
@@ -41,11 +45,18 @@ public:
     UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_Bounty)
     FGameplayAttributeData Bounty = 0.0;
     ATTRIBUTE_ACCESSORS(UGameDirector, Bounty)
+    
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_Shielded)
+    FGameplayAttributeData Shielded = 0.0;
+    ATTRIBUTE_ACCESSORS(UGameDirector, Shielded)
 
 protected:
     
     UFUNCTION()
     virtual void OnRep_EnemyScalar(const FGameplayAttributeData& OldScalar);
+    
+    UFUNCTION()
+    virtual void OnRep_SplitChance(const FGameplayAttributeData& OldSplitChance);
     
     UFUNCTION()
     virtual void OnRep_MultipleRollChance(const FGameplayAttributeData& OldMultipleRollChance);
@@ -58,5 +69,8 @@ protected:
 
     UFUNCTION()
     virtual void OnRep_Bounty(const FGameplayAttributeData& OldBounty);
+
+    UFUNCTION()
+    virtual void OnRep_Shielded(const FGameplayAttributeData& OldShielded);
 	
 };

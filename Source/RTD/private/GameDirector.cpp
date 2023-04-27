@@ -58,6 +58,8 @@ void UGameDirector::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLif
         
     DOREPLIFETIME_CONDITION_NOTIFY(UGameDirector, EnemyScalar, COND_None, REPNOTIFY_Always);
         
+    DOREPLIFETIME_CONDITION_NOTIFY(UGameDirector, SplitChance, COND_None, REPNOTIFY_Always);
+        
     DOREPLIFETIME_CONDITION_NOTIFY(UGameDirector, MultipleRollChance, COND_None, REPNOTIFY_Always);
     
     DOREPLIFETIME_CONDITION_NOTIFY(UGameDirector, Quick, COND_None, REPNOTIFY_Always);
@@ -65,11 +67,18 @@ void UGameDirector::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLif
     DOREPLIFETIME_CONDITION_NOTIFY(UGameDirector, Heavy, COND_None, REPNOTIFY_Always);
     
     DOREPLIFETIME_CONDITION_NOTIFY(UGameDirector, Bounty, COND_None, REPNOTIFY_Always);
+    
+    DOREPLIFETIME_CONDITION_NOTIFY(UGameDirector, Shielded, COND_None, REPNOTIFY_Always);
 }
 
 void UGameDirector::OnRep_EnemyScalar(const FGameplayAttributeData& OldEnemyScalar)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UGameDirector, EnemyScalar, OldEnemyScalar);
+}
+
+void UGameDirector::OnRep_SplitChance(const FGameplayAttributeData& OldSplitChance)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UGameDirector, SplitChance, OldSplitChance);
 }
 
 void UGameDirector::OnRep_MultipleRollChance(const FGameplayAttributeData& OldMultipleRollChance)
@@ -90,4 +99,9 @@ void UGameDirector::OnRep_Heavy(const FGameplayAttributeData& OldHeavy)
 void UGameDirector::OnRep_Bounty(const FGameplayAttributeData& OldBounty)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UGameDirector, Bounty, OldBounty);
+}
+
+void UGameDirector::OnRep_Shielded(const FGameplayAttributeData& OldShielded)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UGameDirector, Shielded, OldShielded);
 }
