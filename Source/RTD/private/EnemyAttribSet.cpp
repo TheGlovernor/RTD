@@ -87,9 +87,13 @@ void UEnemyAttribSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
         
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, Flesh, COND_None, REPNOTIFY_Always);
     
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, FleshRegen, COND_None, REPNOTIFY_Always);
+    
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, MaxFlesh, COND_None, REPNOTIFY_Always);
     
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, DarkFlesh, COND_None, REPNOTIFY_Always);
+    
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, DarkFleshRegen, COND_None, REPNOTIFY_Always);
     
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, MaxDarkFlesh, COND_None, REPNOTIFY_Always);
     
@@ -103,13 +107,19 @@ void UEnemyAttribSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
     
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, Plant, COND_None, REPNOTIFY_Always);
     
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, PlantRegen, COND_None, REPNOTIFY_Always);
+    
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, MaxPlant, COND_None, REPNOTIFY_Always);
     
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, Magic, COND_None, REPNOTIFY_Always);
     
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, MagicRegen, COND_None, REPNOTIFY_Always);
+    
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, MaxMagic, COND_None, REPNOTIFY_Always);
     
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, DarkMagic, COND_None, REPNOTIFY_Always);
+    
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, DarkMagicRegen, COND_None, REPNOTIFY_Always);
     
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, MaxDarkMagic, COND_None, REPNOTIFY_Always);
     
@@ -148,11 +158,20 @@ void UEnemyAttribSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, EntangledBleed, COND_None, REPNOTIFY_Always);
 
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, Offspring, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, Generations, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, TargetOverride, COND_None, REPNOTIFY_Always);
 }
 
 void UEnemyAttribSet::OnRep_Flesh(const FGameplayAttributeData& OldFlesh)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, Flesh, OldFlesh);
+}
+
+void UEnemyAttribSet::OnRep_FleshRegen(const FGameplayAttributeData& OldFleshRegen)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, FleshRegen, OldFleshRegen);
 }
 
 void UEnemyAttribSet::OnRep_MaxFlesh(const FGameplayAttributeData& OldMaxFlesh)
@@ -163,6 +182,11 @@ void UEnemyAttribSet::OnRep_MaxFlesh(const FGameplayAttributeData& OldMaxFlesh)
 void UEnemyAttribSet::OnRep_DarkFlesh(const FGameplayAttributeData& OldDarkFlesh)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, DarkFlesh, OldDarkFlesh);
+}
+
+void UEnemyAttribSet::OnRep_DarkFleshRegen(const FGameplayAttributeData& OldDarkFleshRegen)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, DarkFleshRegen, OldDarkFleshRegen);
 }
 
 void UEnemyAttribSet::OnRep_MaxDarkFlesh(const FGameplayAttributeData& OldMaxDarkFlesh)
@@ -195,6 +219,11 @@ void UEnemyAttribSet::OnRep_Plant(const FGameplayAttributeData& OldPlant)
     GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, Plant, OldPlant);
 }
 
+void UEnemyAttribSet::OnRep_PlantRegen(const FGameplayAttributeData& OldPlantRegen)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, PlantRegen, OldPlantRegen);
+}
+
 void UEnemyAttribSet::OnRep_MaxPlant(const FGameplayAttributeData& OldMaxPlant)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, MaxPlant, OldMaxPlant);
@@ -205,6 +234,11 @@ void UEnemyAttribSet::OnRep_Magic(const FGameplayAttributeData& OldMagic)
     GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, Magic, OldMagic);
 }
 
+void UEnemyAttribSet::OnRep_MagicRegen(const FGameplayAttributeData& OldMagicRegen)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, MagicRegen, OldMagicRegen);
+}
+
 void UEnemyAttribSet::OnRep_MaxMagic(const FGameplayAttributeData& OldMaxMagic)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, MaxMagic, OldMaxMagic);
@@ -213,6 +247,11 @@ void UEnemyAttribSet::OnRep_MaxMagic(const FGameplayAttributeData& OldMaxMagic)
 void UEnemyAttribSet::OnRep_DarkMagic(const FGameplayAttributeData& OldDarkMagic)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, DarkMagic, OldDarkMagic);
+}
+
+void UEnemyAttribSet::OnRep_DarkMagicRegen(const FGameplayAttributeData& OldDarkMagicRegen)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, DarkMagicRegen, OldDarkMagicRegen);
 }
 
 void UEnemyAttribSet::OnRep_MaxDarkMagic(const FGameplayAttributeData& OldMaxDarkMagic)
@@ -308,4 +347,14 @@ void UEnemyAttribSet::OnRep_EntangledBleed(const FGameplayAttributeData& OldEnta
 void UEnemyAttribSet::OnRep_Offspring(const FGameplayAttributeData& OldOffspring)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, Offspring, OldOffspring);
+}
+
+void UEnemyAttribSet::OnRep_Generations(const FGameplayAttributeData& OldGenerations)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, Generations, OldGenerations);
+}
+
+void UEnemyAttribSet::OnRep_TargetOverride(const FGameplayAttributeData& OldTargetOverride)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, TargetOverride, OldTargetOverride);
 }

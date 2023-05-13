@@ -69,6 +69,8 @@ void UGameDirector::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLif
     DOREPLIFETIME_CONDITION_NOTIFY(UGameDirector, Bounty, COND_None, REPNOTIFY_Always);
     
     DOREPLIFETIME_CONDITION_NOTIFY(UGameDirector, Shielded, COND_None, REPNOTIFY_Always);
+    
+    DOREPLIFETIME_CONDITION_NOTIFY(UGameDirector, BossChance, COND_None, REPNOTIFY_Always);
 }
 
 void UGameDirector::OnRep_EnemyScalar(const FGameplayAttributeData& OldEnemyScalar)
@@ -104,4 +106,9 @@ void UGameDirector::OnRep_Bounty(const FGameplayAttributeData& OldBounty)
 void UGameDirector::OnRep_Shielded(const FGameplayAttributeData& OldShielded)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UGameDirector, Shielded, OldShielded);
+}
+
+void UGameDirector::OnRep_BossChance(const FGameplayAttributeData& OldBossChance)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UGameDirector, BossChance, OldBossChance);
 }
