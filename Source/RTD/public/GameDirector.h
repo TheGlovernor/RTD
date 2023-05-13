@@ -49,6 +49,10 @@ public:
     UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_Shielded)
     FGameplayAttributeData Shielded = 0.0;
     ATTRIBUTE_ACCESSORS(UGameDirector, Shielded)
+    
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_BossChance)
+    FGameplayAttributeData BossChance = 0.0;
+    ATTRIBUTE_ACCESSORS(UGameDirector, BossChance)
 
 protected:
     
@@ -72,5 +76,8 @@ protected:
 
     UFUNCTION()
     virtual void OnRep_Shielded(const FGameplayAttributeData& OldShielded);
+
+    UFUNCTION()
+    virtual void OnRep_BossChance(const FGameplayAttributeData& OldBossChance);
 	
 };

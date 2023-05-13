@@ -22,9 +22,13 @@ public:
     virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data) override;
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
         
-    UPROPERTY(BlueprintReadOnly, Category = "Health", ReplicatedUsing = OnRep_Flesh)
+    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_Flesh)
     FGameplayAttributeData Flesh = 0.0;
     ATTRIBUTE_ACCESSORS(UEnemyAttribSet, Flesh)    
+        
+    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_FleshRegen)
+    FGameplayAttributeData FleshRegen = 0.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, FleshRegen)
     
     UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_MaxFlesh)
     FGameplayAttributeData MaxFlesh = 0.0;
@@ -33,6 +37,10 @@ public:
     UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_DarkFlesh)
     FGameplayAttributeData DarkFlesh = 0.0;
     ATTRIBUTE_ACCESSORS(UEnemyAttribSet, DarkFlesh)    
+    
+    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_DarkFleshRegen)
+    FGameplayAttributeData DarkFleshRegen = 0.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, DarkFleshRegen)
     
     UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_MaxDarkFlesh)
     FGameplayAttributeData MaxDarkFlesh = 0.0;
@@ -58,6 +66,10 @@ public:
     FGameplayAttributeData Plant = 0.0;
     ATTRIBUTE_ACCESSORS(UEnemyAttribSet, Plant)    
     
+    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_PlantRegen)
+    FGameplayAttributeData PlantRegen = 0.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, PlantRegen)
+    
     UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_MaxPlant)
     FGameplayAttributeData MaxPlant = 0.0;
     ATTRIBUTE_ACCESSORS(UEnemyAttribSet, MaxPlant)    
@@ -66,6 +78,10 @@ public:
     FGameplayAttributeData Magic = 0.0;
     ATTRIBUTE_ACCESSORS(UEnemyAttribSet, Magic)    
     
+    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_MagicRegen)
+    FGameplayAttributeData MagicRegen = 0.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, MagicRegen)
+    
     UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_MaxMagic)
     FGameplayAttributeData MaxMagic = 0.0;
     ATTRIBUTE_ACCESSORS(UEnemyAttribSet, MaxMagic)    
@@ -73,6 +89,10 @@ public:
     UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_DarkMagic)
     FGameplayAttributeData DarkMagic = 0.0;
     ATTRIBUTE_ACCESSORS(UEnemyAttribSet, DarkMagic)    
+    
+    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_DarkMagicRegen)
+    FGameplayAttributeData DarkMagicRegen = 0.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, DarkMagicRegen)
     
     UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_MaxDarkMagic)
     FGameplayAttributeData MaxDarkMagic = 0.0;
@@ -150,16 +170,30 @@ public:
     FGameplayAttributeData Offspring = 0;
     ATTRIBUTE_ACCESSORS(UEnemyAttribSet, Offspring)
 
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_Generations)
+    FGameplayAttributeData Generations = 0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, Generations)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_TargetOverride)
+    FGameplayAttributeData TargetOverride = 0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, TargetOverride)
+
 protected:
     
     UFUNCTION()
     virtual void OnRep_Flesh(const FGameplayAttributeData& OldFlesh);
+    
+    UFUNCTION()
+    virtual void OnRep_FleshRegen(const FGameplayAttributeData& OldFleshRegen);
 
     UFUNCTION()
     virtual void OnRep_MaxFlesh(const FGameplayAttributeData& OldMaxFlesh);
 
     UFUNCTION()
     virtual void OnRep_DarkFlesh(const FGameplayAttributeData& OldDarkFlesh);
+
+    UFUNCTION()
+    virtual void OnRep_DarkFleshRegen(const FGameplayAttributeData& OldDarkFleshRegen);
 
     UFUNCTION()
     virtual void OnRep_MaxDarkFlesh(const FGameplayAttributeData& OldMaxDarkFlesh);
@@ -180,16 +214,25 @@ protected:
     virtual void OnRep_Plant(const FGameplayAttributeData& OldPlant);
 
     UFUNCTION()
+    virtual void OnRep_PlantRegen(const FGameplayAttributeData& OldPlantRegen);
+
+    UFUNCTION()
     virtual void OnRep_MaxPlant(const FGameplayAttributeData& OldMaxPlant);
 
     UFUNCTION()
     virtual void OnRep_Magic(const FGameplayAttributeData& OldMagic);
 
     UFUNCTION()
+    virtual void OnRep_MagicRegen(const FGameplayAttributeData& OldMagicRegen);
+
+    UFUNCTION()
     virtual void OnRep_MaxMagic(const FGameplayAttributeData& OldMaxMagic);
 
     UFUNCTION()
     virtual void OnRep_DarkMagic(const FGameplayAttributeData& OldDarkMagic);
+
+    UFUNCTION()
+    virtual void OnRep_DarkMagicRegen(const FGameplayAttributeData& OldDarkMagicRegen);
 
     UFUNCTION()
     virtual void OnRep_MaxDarkMagic(const FGameplayAttributeData& OldMaxDarkMagic);
@@ -247,5 +290,11 @@ protected:
 
     UFUNCTION()
     virtual void OnRep_Offspring(const FGameplayAttributeData& OldOffspring);
+
+    UFUNCTION()
+    virtual void OnRep_Generations(const FGameplayAttributeData& OldGenerations);
+
+    UFUNCTION()
+    virtual void OnRep_TargetOverride(const FGameplayAttributeData& OldTargetOverride);
 
 };
