@@ -68,7 +68,10 @@ void UEnemyAttribSet::PostGameplayEffectExecute(const FGameplayEffectModCallback
         SetDarkMagic(FMath::Clamp(GetDarkMagic(), 0.f, GetMaxDarkMagic()));
     }
     else if (Data.EvaluatedData.Attribute == GetMoveSpeedAttribute()) {
-        SetMoveSpeed(FMath::Clamp(GetMoveSpeed(), 0.f, 10000));
+        SetMoveSpeed(FMath::Clamp(GetMoveSpeed(), 0.f, 100000));
+    }
+    else if (Data.EvaluatedData.Attribute == GetSpeedModifierAttribute()) {
+        SetSpeedModifier(FMath::Clamp(GetMoveSpeed(), 0.5, 2));
     }
     else if (Data.EvaluatedData.Attribute == GetKillValueAttribute()) {
         SetKillValue(FMath::Clamp(GetKillValue(), 0.f, 1000000000));

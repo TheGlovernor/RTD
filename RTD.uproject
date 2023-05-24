@@ -61,6 +61,10 @@
 		{
 			"Name": "AtomsUnreal",
 			"Enabled": true
+		},
+		{
+			"Name": "Metasound",
+			"Enabled": true
 		}
 	]
 }
