@@ -22,31 +22,56 @@ public:
     virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data) override;
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
         
-    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_Flesh)
-    FGameplayAttributeData Flesh = 0.0;
-    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, Flesh)    
+    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_Health)
+    FGameplayAttributeData Health = 0.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, Health)    
         
-    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_FleshRegen)
-    FGameplayAttributeData FleshRegen = 0.0;
-    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, FleshRegen)
+    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_MaxHealth)
+    FGameplayAttributeData MaxHealth = 0.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, MaxHealth)
     
-    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_MaxFlesh)
-    FGameplayAttributeData MaxFlesh = 0.0;
-    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, MaxFlesh)    
+    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_HealthRegen)
+    FGameplayAttributeData HealthRegen = 0.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, HealthRegen)
     
-    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_DarkFlesh)
-    FGameplayAttributeData DarkFlesh = 0.0;
-    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, DarkFlesh)    
+    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_Shield)
+    FGameplayAttributeData Shield = 0.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, Shield)
     
-    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_DarkFleshRegen)
-    FGameplayAttributeData DarkFleshRegen = 0.0;
-    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, DarkFleshRegen)
+    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_MaxShield)
+    FGameplayAttributeData MaxShield = 0.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, MaxShield)
     
-    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_MaxDarkFlesh)
-    FGameplayAttributeData MaxDarkFlesh = 0.0;
-    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, MaxDarkFlesh)    
+    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_ShieldRegen)
+    FGameplayAttributeData ShieldRegen = 0.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, ShieldRegen)
+
+    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_ShieldRegenDelay)
+    FGameplayAttributeData ShieldRegenDelay = 0.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, ShieldRegenDelay)
+
+    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_Armor)
+    FGameplayAttributeData Armor = 0.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, Armor)
+
+    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_MaxArmor)
+    FGameplayAttributeData MaxArmor = 0.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, MaxArmor)
+
+    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_ArmorRegen)
+    FGameplayAttributeData ArmorRegen = 0.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, ArmorRegen)
+
+    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_ArmorRegenDelay)
+    FGameplayAttributeData ArmorRegenDelay = 0.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, ArmorRegenDelay)
+
+    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_ArmorDamageThreshold)
+    FGameplayAttributeData ArmorDamageThreshold = 0.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, ArmorDamageThreshold)
     
-    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_Cloth)
+    // also dont forget about flesh and dark flesh
+    /*UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_Cloth)
     FGameplayAttributeData Cloth = 0.0;
     ATTRIBUTE_ACCESSORS(UEnemyAttribSet, Cloth)    
     
@@ -96,7 +121,7 @@ public:
     
     UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_MaxDarkMagic)
     FGameplayAttributeData MaxDarkMagic = 0.0;
-    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, MaxDarkMagic)    
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, MaxDarkMagic)    */
     
     UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_MoveSpeed)
     FGameplayAttributeData MoveSpeed = 0.0;
@@ -181,24 +206,42 @@ public:
 protected:
     
     UFUNCTION()
-    virtual void OnRep_Flesh(const FGameplayAttributeData& OldFlesh);
+    virtual void OnRep_Health(const FGameplayAttributeData& OldHealth);
     
     UFUNCTION()
-    virtual void OnRep_FleshRegen(const FGameplayAttributeData& OldFleshRegen);
+    virtual void OnRep_MaxHealth(const FGameplayAttributeData& OldMaxHealth);
 
     UFUNCTION()
-    virtual void OnRep_MaxFlesh(const FGameplayAttributeData& OldMaxFlesh);
+    virtual void OnRep_HealthRegen(const FGameplayAttributeData& OldHealthRegen);
 
     UFUNCTION()
-    virtual void OnRep_DarkFlesh(const FGameplayAttributeData& OldDarkFlesh);
+    virtual void OnRep_Shield(const FGameplayAttributeData& OldShield);
 
     UFUNCTION()
-    virtual void OnRep_DarkFleshRegen(const FGameplayAttributeData& OldDarkFleshRegen);
+    virtual void OnRep_MaxShield(const FGameplayAttributeData& OldMaxShield);
 
     UFUNCTION()
-    virtual void OnRep_MaxDarkFlesh(const FGameplayAttributeData& OldMaxDarkFlesh);
+    virtual void OnRep_ShieldRegen(const FGameplayAttributeData& OldShieldRegen);
 
     UFUNCTION()
+    virtual void OnRep_ShieldRegenDelay(const FGameplayAttributeData& OldShieldRegenDelay);
+
+    UFUNCTION()
+    virtual void OnRep_Armor(const FGameplayAttributeData& OldArmor);
+
+    UFUNCTION()
+    virtual void OnRep_MaxArmor(const FGameplayAttributeData& OldMaxArmor);
+
+    UFUNCTION()
+    virtual void OnRep_ArmorRegen(const FGameplayAttributeData& OldArmorRegen);
+
+    UFUNCTION()
+    virtual void OnRep_ArmorRegenDelay(const FGameplayAttributeData& OldArmorRegenDelay);
+
+    UFUNCTION()
+    virtual void OnRep_ArmorDamageThreshold(const FGameplayAttributeData& OldArmorDamageThreshold);
+
+    /*UFUNCTION()
     virtual void OnRep_Cloth(const FGameplayAttributeData& OldCloth);
 
     UFUNCTION()
@@ -235,7 +278,7 @@ protected:
     virtual void OnRep_DarkMagicRegen(const FGameplayAttributeData& OldDarkMagicRegen);
 
     UFUNCTION()
-    virtual void OnRep_MaxDarkMagic(const FGameplayAttributeData& OldMaxDarkMagic);
+    virtual void OnRep_MaxDarkMagic(const FGameplayAttributeData& OldMaxDarkMagic);*/
 
     UFUNCTION()
     virtual void OnRep_MoveSpeed(const FGameplayAttributeData& OldMoveSpeed);
