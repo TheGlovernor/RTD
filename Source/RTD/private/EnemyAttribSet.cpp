@@ -46,8 +46,8 @@ void UEnemyAttribSet::PostGameplayEffectExecute(const FGameplayEffectModCallback
 
     // Example 2: Basic example to clamp the value of an Health Attribute between 0 and another MaxHealth Attribute
 
-    if (Data.EvaluatedData.Attribute == GetFleshAttribute()) {
-         SetFlesh(FMath::Clamp(GetFlesh(), 0.f, GetMaxFlesh()));
+    /*if (Data.EvaluatedData.Attribute == GetHealthAttribute()) {
+         SetHealth(FMath::Clamp(GetHealth(), 0.f, GetMaxFlesh()));
     }
     else if (Data.EvaluatedData.Attribute == GetDarkFleshAttribute()) {
         SetDarkFlesh(FMath::Clamp(GetDarkFlesh(), 0.f, GetMaxDarkFlesh()));
@@ -67,7 +67,7 @@ void UEnemyAttribSet::PostGameplayEffectExecute(const FGameplayEffectModCallback
     else if (Data.EvaluatedData.Attribute == GetDarkMagicAttribute()) {
         SetDarkMagic(FMath::Clamp(GetDarkMagic(), 0.f, GetMaxDarkMagic()));
     }
-    else if (Data.EvaluatedData.Attribute == GetMoveSpeedAttribute()) {
+    else */if (Data.EvaluatedData.Attribute == GetMoveSpeedAttribute()) {
         SetMoveSpeed(FMath::Clamp(GetMoveSpeed(), 0.f, 100000));
     }
     else if (Data.EvaluatedData.Attribute == GetSpeedModifierAttribute()) {
@@ -88,23 +88,31 @@ void UEnemyAttribSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 {
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
         
-    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, Flesh, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, Health, COND_None, REPNOTIFY_Always);
     
-    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, FleshRegen, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, MaxHealth, COND_None, REPNOTIFY_Always);
     
-    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, MaxFlesh, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, HealthRegen, COND_None, REPNOTIFY_Always);
     
-    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, DarkFlesh, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, Shield, COND_None, REPNOTIFY_Always);
     
-    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, DarkFleshRegen, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, MaxShield, COND_None, REPNOTIFY_Always);
     
-    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, MaxDarkFlesh, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, ShieldRegen, COND_None, REPNOTIFY_Always);
     
-    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, Cloth, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, ShieldRegenDelay, COND_None, REPNOTIFY_Always);
     
-    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, MaxCloth, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, Armor, COND_None, REPNOTIFY_Always);
     
-    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, Metal, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, MaxArmor, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, ArmorRegen, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, ArmorRegenDelay, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, ArmorDamageThreshold, COND_None, REPNOTIFY_Always);
+    
+    /*DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, Metal, COND_None, REPNOTIFY_Always);
     
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, MaxMetal, COND_None, REPNOTIFY_Always);
     
@@ -124,7 +132,7 @@ void UEnemyAttribSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
     
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, DarkMagicRegen, COND_None, REPNOTIFY_Always);
     
-    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, MaxDarkMagic, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, MaxDarkMagic, COND_None, REPNOTIFY_Always);*/
     
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, MoveSpeed, COND_None, REPNOTIFY_Always);
 
@@ -167,37 +175,67 @@ void UEnemyAttribSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, TargetOverride, COND_None, REPNOTIFY_Always);
 }
 
-void UEnemyAttribSet::OnRep_Flesh(const FGameplayAttributeData& OldFlesh)
+void UEnemyAttribSet::OnRep_Health(const FGameplayAttributeData& OldHealth)
 {
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, Flesh, OldFlesh);
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, Health, OldHealth);
 }
 
-void UEnemyAttribSet::OnRep_FleshRegen(const FGameplayAttributeData& OldFleshRegen)
+void UEnemyAttribSet::OnRep_MaxHealth(const FGameplayAttributeData& OldMaxHealth)
 {
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, FleshRegen, OldFleshRegen);
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, MaxHealth, OldMaxHealth);
 }
 
-void UEnemyAttribSet::OnRep_MaxFlesh(const FGameplayAttributeData& OldMaxFlesh)
+void UEnemyAttribSet::OnRep_HealthRegen(const FGameplayAttributeData& OldHealthRegen)
 {
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, MaxFlesh, OldMaxFlesh);
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, HealthRegen, OldHealthRegen);
 }
 
-void UEnemyAttribSet::OnRep_DarkFlesh(const FGameplayAttributeData& OldDarkFlesh)
+void UEnemyAttribSet::OnRep_Shield(const FGameplayAttributeData& OldShield)
 {
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, DarkFlesh, OldDarkFlesh);
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, Shield, OldShield);
 }
 
-void UEnemyAttribSet::OnRep_DarkFleshRegen(const FGameplayAttributeData& OldDarkFleshRegen)
+void UEnemyAttribSet::OnRep_MaxShield(const FGameplayAttributeData& OldMaxShield)
 {
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, DarkFleshRegen, OldDarkFleshRegen);
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, MaxShield, OldMaxShield);
 }
 
-void UEnemyAttribSet::OnRep_MaxDarkFlesh(const FGameplayAttributeData& OldMaxDarkFlesh)
+void UEnemyAttribSet::OnRep_ShieldRegen(const FGameplayAttributeData& OldShieldRegen)
 {
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, MaxDarkFlesh, OldMaxDarkFlesh);
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, ShieldRegen, OldShieldRegen);
 }
 
-void UEnemyAttribSet::OnRep_Cloth(const FGameplayAttributeData& OldCloth)
+void UEnemyAttribSet::OnRep_ShieldRegenDelay(const FGameplayAttributeData& OldShieldRegenDelay)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, ShieldRegenDelay, OldShieldRegenDelay);
+}
+
+void UEnemyAttribSet::OnRep_Armor(const FGameplayAttributeData& OldArmor)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, Armor, OldArmor);
+}
+
+void UEnemyAttribSet::OnRep_MaxArmor(const FGameplayAttributeData& OldMaxArmor)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, MaxArmor, OldMaxArmor);
+}
+
+void UEnemyAttribSet::OnRep_ArmorRegen(const FGameplayAttributeData& OldArmorRegen)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, ArmorRegen, OldArmorRegen);
+}
+
+void UEnemyAttribSet::OnRep_ArmorRegenDelay(const FGameplayAttributeData& OldArmorRegenDelay)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, ArmorRegenDelay, OldArmorRegenDelay);
+}
+
+void UEnemyAttribSet::OnRep_ArmorDamageThreshold(const FGameplayAttributeData& OldArmorDamageThreshold)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, ArmorDamageThreshold, OldArmorDamageThreshold);
+}
+
+/*void UEnemyAttribSet::OnRep_Cloth(const FGameplayAttributeData& OldCloth)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, Cloth, OldCloth);
 }
@@ -260,7 +298,7 @@ void UEnemyAttribSet::OnRep_DarkMagicRegen(const FGameplayAttributeData& OldDark
 void UEnemyAttribSet::OnRep_MaxDarkMagic(const FGameplayAttributeData& OldMaxDarkMagic)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, MaxDarkMagic, OldMaxDarkMagic);
-}
+}*/
 
 void UEnemyAttribSet::OnRep_MoveSpeed(const FGameplayAttributeData& OldMoveSpeed)
 {
