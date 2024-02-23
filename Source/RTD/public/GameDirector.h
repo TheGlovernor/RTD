@@ -22,6 +22,14 @@ public:
     virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data) override;
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
         
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_NewDenTime)
+    FGameplayAttributeData NewDenTime = 1.0;
+    ATTRIBUTE_ACCESSORS(UGameDirector, NewDenTime)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_DenExpandTime)
+    FGameplayAttributeData DenExpandTime = 1.0;
+    ATTRIBUTE_ACCESSORS(UGameDirector, DenExpandTime)
+
     UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_EnemyScalar)
     FGameplayAttributeData EnemyScalar = 1.0;
     ATTRIBUTE_ACCESSORS(UGameDirector, EnemyScalar)
@@ -56,6 +64,12 @@ public:
 
 protected:
     
+    UFUNCTION()
+    virtual void OnRep_NewDenTime(const FGameplayAttributeData& OldNewDenTime);
+
+    UFUNCTION()
+    virtual void OnRep_DenExpandTime(const FGameplayAttributeData& OldDenExpandTime);
+
     UFUNCTION()
     virtual void OnRep_EnemyScalar(const FGameplayAttributeData& OldScalar);
     
