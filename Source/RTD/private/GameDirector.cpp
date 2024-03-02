@@ -56,6 +56,10 @@ void UGameDirector::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLif
 {
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
         
+    DOREPLIFETIME_CONDITION_NOTIFY(UGameDirector, NewDenTime, COND_None, REPNOTIFY_Always);
+        
+    DOREPLIFETIME_CONDITION_NOTIFY(UGameDirector, DenExpandTime, COND_None, REPNOTIFY_Always);
+        
     DOREPLIFETIME_CONDITION_NOTIFY(UGameDirector, EnemyScalar, COND_None, REPNOTIFY_Always);
         
     DOREPLIFETIME_CONDITION_NOTIFY(UGameDirector, SplitChance, COND_None, REPNOTIFY_Always);
@@ -71,6 +75,16 @@ void UGameDirector::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLif
     DOREPLIFETIME_CONDITION_NOTIFY(UGameDirector, Shielded, COND_None, REPNOTIFY_Always);
     
     DOREPLIFETIME_CONDITION_NOTIFY(UGameDirector, BossChance, COND_None, REPNOTIFY_Always);
+}
+
+void UGameDirector::OnRep_NewDenTime(const FGameplayAttributeData& OldNewDenTime)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UGameDirector, NewDenTime, OldNewDenTime);
+}
+
+void UGameDirector::OnRep_DenExpandTime(const FGameplayAttributeData& OldDenExpandTime)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UGameDirector, DenExpandTime, OldDenExpandTime);
 }
 
 void UGameDirector::OnRep_EnemyScalar(const FGameplayAttributeData& OldEnemyScalar)
