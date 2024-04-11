@@ -36,15 +36,15 @@ public:
     
     UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_T2IncreaseRate)
     FGameplayAttributeData T2IncreaseRate = 0.0;
-    ATTRIBUTE_ACCESSORS(UDen, T2IncreaseRate)    
+    ATTRIBUTE_ACCESSORS(UDen, T2IncreaseRate)
     
-    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_BossWeight)
-    FGameplayAttributeData BossWeight = 0.0;
-    ATTRIBUTE_ACCESSORS(UDen, BossWeight)    
-    
-    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_BossIncreaseRate)
-    FGameplayAttributeData BossIncreaseRate = 0.0;
-    ATTRIBUTE_ACCESSORS(UDen, BossIncreaseRate)    
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_NormalCooldownRate)
+    FGameplayAttributeData NormalCooldownRate = 1.0;
+    ATTRIBUTE_ACCESSORS(UDen, NormalCooldownRate)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_BossCooldownRate)
+    FGameplayAttributeData BossCooldownRate= 1.0;
+    ATTRIBUTE_ACCESSORS(UDen, BossCooldownRate)    
 
 protected:
     
@@ -61,10 +61,9 @@ protected:
     virtual void OnRep_T2IncreaseRate(const FGameplayAttributeData& OldT2IncreaseRate);
 
     UFUNCTION()
-    virtual void OnRep_BossWeight(const FGameplayAttributeData& OldBossWeight);
+    virtual void OnRep_NormalCooldownRate(const FGameplayAttributeData& OldNormalCooldownRate);
 
     UFUNCTION()
-    virtual void OnRep_BossIncreaseRate(const FGameplayAttributeData& OldBossIncreaseRate);
-	
+    virtual void OnRep_BossCooldownRate(const FGameplayAttributeData& OldBossCooldownRate);
 	
 };

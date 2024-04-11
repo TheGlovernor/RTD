@@ -64,9 +64,9 @@ void UDen::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProp
     
     DOREPLIFETIME_CONDITION_NOTIFY(UDen, T2IncreaseRate, COND_None, REPNOTIFY_Always);
     
-    DOREPLIFETIME_CONDITION_NOTIFY(UDen, BossWeight, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UDen, NormalCooldownRate, COND_None, REPNOTIFY_Always);
     
-    DOREPLIFETIME_CONDITION_NOTIFY(UDen, BossIncreaseRate, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UDen, BossCooldownRate, COND_None, REPNOTIFY_Always);
 }
 
 void UDen::OnRep_T1Weight(const FGameplayAttributeData& OldT1Weight)
@@ -89,12 +89,12 @@ void UDen::OnRep_T2IncreaseRate(const FGameplayAttributeData& OldT2IncreaseRate)
     GAMEPLAYATTRIBUTE_REPNOTIFY(UDen, T2IncreaseRate, OldT2IncreaseRate);
 }
 
-void UDen::OnRep_BossWeight(const FGameplayAttributeData& OldBossWeight)
+void UDen::OnRep_NormalCooldownRate(const FGameplayAttributeData& OldNormalCooldownRate)
 {
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UDen, BossWeight, OldBossWeight);
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UDen, NormalCooldownRate, OldNormalCooldownRate);
 }
 
-void UDen::OnRep_BossIncreaseRate(const FGameplayAttributeData& OldBossIncreaseRate)
+void UDen::OnRep_BossCooldownRate(const FGameplayAttributeData& OldBossCooldownRate)
 {
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UDen, BossIncreaseRate, OldBossIncreaseRate);
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UDen, BossCooldownRate, OldBossCooldownRate);
 }
