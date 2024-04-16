@@ -38,13 +38,21 @@ public:
     FGameplayAttributeData T2IncreaseRate = 0.0;
     ATTRIBUTE_ACCESSORS(UDen, T2IncreaseRate)
     
-    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_NormalCooldownRate)
-    FGameplayAttributeData NormalCooldownRate = 1.0;
-    ATTRIBUTE_ACCESSORS(UDen, NormalCooldownRate)
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_NormalCooldownDecreaseRate)
+    FGameplayAttributeData NormalCooldownDecreaseRate = 1.0;
+    ATTRIBUTE_ACCESSORS(UDen, NormalCooldownDecreaseRate)
 
-    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_BossCooldownRate)
-    FGameplayAttributeData BossCooldownRate= 1.0;
-    ATTRIBUTE_ACCESSORS(UDen, BossCooldownRate)    
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_BossCooldownDecreaseRate)
+    FGameplayAttributeData BossCooldownDecreaseRate= 1.0;
+    ATTRIBUTE_ACCESSORS(UDen, BossCooldownDecreaseRate)
+    
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_NormalCooldownMultiplier)
+    FGameplayAttributeData NormalCooldownMultiplier = 1.0;
+    ATTRIBUTE_ACCESSORS(UDen, NormalCooldownMultiplier)
+
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_BossCooldownMultiplier)
+    FGameplayAttributeData BossCooldownMultiplier = 1.0;
+    ATTRIBUTE_ACCESSORS(UDen, BossCooldownMultiplier)
 
 protected:
     
@@ -61,9 +69,15 @@ protected:
     virtual void OnRep_T2IncreaseRate(const FGameplayAttributeData& OldT2IncreaseRate);
 
     UFUNCTION()
-    virtual void OnRep_NormalCooldownRate(const FGameplayAttributeData& OldNormalCooldownRate);
+    virtual void OnRep_NormalCooldownDecreaseRate(const FGameplayAttributeData& OldNormalCooldownRate);
 
     UFUNCTION()
-    virtual void OnRep_BossCooldownRate(const FGameplayAttributeData& OldBossCooldownRate);
+    virtual void OnRep_BossCooldownDecreaseRate(const FGameplayAttributeData& OldBossCooldownRate);
+
+    UFUNCTION()
+    virtual void OnRep_NormalCooldownMultiplier(const FGameplayAttributeData& OldNormalCooldownMultiplier);
+
+    UFUNCTION()
+    virtual void OnRep_BossCooldownMultiplier(const FGameplayAttributeData& OldBossCooldownMultiplier);
 	
 };
