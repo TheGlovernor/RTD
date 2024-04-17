@@ -46,39 +46,21 @@ void UEnemyAttribSet::PostGameplayEffectExecute(const FGameplayEffectModCallback
 
     // Example 2: Basic example to clamp the value of an Health Attribute between 0 and another MaxHealth Attribute
 
-    /*if (Data.EvaluatedData.Attribute == GetHealthAttribute()) {
-         SetHealth(FMath::Clamp(GetHealth(), 0.f, GetMaxFlesh()));
+    if (Data.EvaluatedData.Attribute == GetHealthAttribute()) {
+        SetHealth(FMath::Clamp(GetHealth(), -100.f, GetMaxHealth()));
     }
-    else if (Data.EvaluatedData.Attribute == GetDarkFleshAttribute()) {
-        SetDarkFlesh(FMath::Clamp(GetDarkFlesh(), 0.f, GetMaxDarkFlesh()));
+    else if (Data.EvaluatedData.Attribute == GetShieldAttribute()) {
+        SetShield(FMath::Clamp(GetShield(), 0.f, GetMaxShield()));
     }
-    else if (Data.EvaluatedData.Attribute == GetClothAttribute()) {
-        SetCloth(FMath::Clamp(GetCloth(), 0.f, GetMaxCloth()));
+    else if (Data.EvaluatedData.Attribute == GetArmorAttribute()) {
+        SetArmor(FMath::Clamp(GetArmor(), 0.f, GetMaxArmor()));
     }
-    else if (Data.EvaluatedData.Attribute == GetMetalAttribute()) {
-        SetMetal(FMath::Clamp(GetMetal(), 0.f, GetMaxMetal()));
-    }
-    else if (Data.EvaluatedData.Attribute == GetPlantAttribute()) {
-        SetPlant(FMath::Clamp(GetPlant(), 0.f, GetMaxPlant()));
-    }
-    else if (Data.EvaluatedData.Attribute == GetMagicAttribute()) {
-        SetMagic(FMath::Clamp(GetMagic(), 0.f, GetMaxMagic()));
-    }
-    else if (Data.EvaluatedData.Attribute == GetDarkMagicAttribute()) {
-        SetDarkMagic(FMath::Clamp(GetDarkMagic(), 0.f, GetMaxDarkMagic()));
-    }
-    else */if (Data.EvaluatedData.Attribute == GetMoveSpeedAttribute()) {
+    else if (Data.EvaluatedData.Attribute == GetMoveSpeedAttribute()) {
         SetMoveSpeed(FMath::Clamp(GetMoveSpeed(), 0.f, 100000));
     }
-    else if (Data.EvaluatedData.Attribute == GetSpeedModifierAttribute()) {
-        SetSpeedModifier(FMath::Clamp(GetMoveSpeed(), 0.5, 2));
-    }
-    else if (Data.EvaluatedData.Attribute == GetKillValueAttribute()) {
-        SetKillValue(FMath::Clamp(GetKillValue(), 0.f, 1000000000));
-    }
-    else if (Data.EvaluatedData.Attribute == GetHomeDamageAmountAttribute()) {
-        SetHomeDamageAmount(FMath::Clamp(GetHomeDamageAmount(), 0.f, 10000));
-    }
+    //else if (Data.EvaluatedData.Attribute == GetSpeedModifierAttribute()) {
+    //    SetSpeedModifier(FMath::Clamp(GetMoveSpeed(), 0.5, 2));
+    //}
     else if (Data.EvaluatedData.Attribute == GetDamTakenModifierAttribute()) {
         SetDamTakenModifier(FMath::Clamp(GetDamTakenModifier(), 0.f, 10000));
     }
