@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "5.0",
+	"EngineAssociation": "5.4",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -57,10 +57,6 @@
 			"Name": "OpenRTSCamera",
 			"Enabled": true,
 			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/94e9872ad3754e798b6ec53f4494f5de"
-		},
-		{
-			"Name": "AtomsUnreal",
-			"Enabled": true
 		},
 		{
 			"Name": "Metasound",
