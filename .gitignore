@@ -12,4 +12,4 @@ Saved
 *.suo
 *.xcodeproj
 *.xcworkspace
-Plugins\vc-ue-extensions
+Plugins/vc-ue-extensions/
