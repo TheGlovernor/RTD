@@ -13,3 +13,4 @@ Saved
 *.xcodeproj
 *.xcworkspace
 Plugins/vc-ue-extensions/
+/Build/Windows/FileOpenOrder
