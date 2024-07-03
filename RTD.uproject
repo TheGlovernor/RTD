@@ -12,7 +12,8 @@
 				"CoreUObject",
 				"Engine",
 				"GameplayAbilities",
-				"GASCompanion"
+				"GASCompanion",
+				"CommonUI"
 			]
 		}
 	],
@@ -66,5 +67,10 @@
 			"Name": "StaticMeshEditorModeling",
 			"Enabled": true
 		}
+	],
+	"TargetPlatforms": [
+		"Linux",
+		"LinuxArm64",
+		"Windows"
 	]
 }

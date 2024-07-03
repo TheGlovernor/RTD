@@ -8,14 +8,14 @@ public class RTD : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HexGrids", "FastNoiseGenerator", "FastNoise", "GASCompanion", "GameplayAbilities", "GameplayTasks", "GameplayTags" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "NavigationSystem", "InputCore", "FastNoiseGenerator", "FastNoise", "OpenRTSCamera", "GASCompanion", "GameplayAbilities", "GameplayTasks", "GameplayTags" });
 
 		PublicIncludePaths.AddRange(new string[] { "HexGrids/Public", "HexGrids/Classes" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
 		// Uncomment if you are using Slate UI
-		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
+		PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
 		
 		// Uncomment if you are using online features
 		// PrivateDependencyModuleNames.Add("OnlineSubsystem");

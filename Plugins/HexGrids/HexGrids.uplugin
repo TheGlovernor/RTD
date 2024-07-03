@@ -1,0 +1,40 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "13",
+	"FriendlyName": "Hex Grids",
+	"Description": "Hex Grids is a flexible framework that provides functions for generating, querying, and working with hexagon grids.",
+	"Category": "Hex Grids",
+	"CreatedBy": "Zenith Digital",
+	"CreatedByURL": "https://zenith-digital.co.uk/",
+	"DocsURL": "https://zenith-digital.co.uk/MP-HexGrids/",
+	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/05e7a0e674824987abbd98905aab2cfd",
+	"SupportURL": "https://discord.gg/TMzNaRY",
+	"EngineVersion": "5.4.0",
+	"CanContainContent": true,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "HexGrids",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault",
+			"PlatformAllowList": [
+				"Win64",
+				"Android",
+				"IOS",
+				"Mac",
+				"Linux"
+			]
+		},
+		{
+			"Name": "HexGridsEditor",
+			"Type": "Editor",
+			"LoadingPhase": "PreDefault",
+			"PlatformAllowList": [
+				"Win64",
+				"Mac",
+				"Linux"
+			]
+		}
+	]
+}
