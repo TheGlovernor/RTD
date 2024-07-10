@@ -34,6 +34,10 @@ public:
     FGameplayAttributeData HealthRegen = 0.0;
     ATTRIBUTE_ACCESSORS(UEnemyAttribSet, HealthRegen)
     
+    UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_HealthRegenDelay)
+    FGameplayAttributeData HealthRegenDelay = 0.0;
+    ATTRIBUTE_ACCESSORS(UEnemyAttribSet, HealthRegenDelay)
+    
     UPROPERTY(BlueprintReadOnly, Category = "health", ReplicatedUsing = OnRep_Shield)
     FGameplayAttributeData Shield = 0.0;
     ATTRIBUTE_ACCESSORS(UEnemyAttribSet, Shield)
@@ -213,6 +217,9 @@ protected:
 
     UFUNCTION()
     virtual void OnRep_HealthRegen(const FGameplayAttributeData& OldHealthRegen);
+
+    UFUNCTION()
+    virtual void OnRep_HealthRegenDelay(const FGameplayAttributeData& OldHealthRegenDelay);
 
     UFUNCTION()
     virtual void OnRep_Shield(const FGameplayAttributeData& OldShield);
