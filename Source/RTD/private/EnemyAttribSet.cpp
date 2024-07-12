@@ -76,6 +76,8 @@ void UEnemyAttribSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
     
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, HealthRegen, COND_None, REPNOTIFY_Always);
     
+    DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, HealthRegenDelay, COND_None, REPNOTIFY_Always);
+    
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, Shield, COND_None, REPNOTIFY_Always);
     
     DOREPLIFETIME_CONDITION_NOTIFY(UEnemyAttribSet, MaxShield, COND_None, REPNOTIFY_Always);
@@ -170,6 +172,11 @@ void UEnemyAttribSet::OnRep_MaxHealth(const FGameplayAttributeData& OldMaxHealth
 void UEnemyAttribSet::OnRep_HealthRegen(const FGameplayAttributeData& OldHealthRegen)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, HealthRegen, OldHealthRegen);
+}
+
+void UEnemyAttribSet::OnRep_HealthRegenDelay(const FGameplayAttributeData& OldHealthRegenDelay)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UEnemyAttribSet, HealthRegenDelay, OldHealthRegenDelay);
 }
 
 void UEnemyAttribSet::OnRep_Shield(const FGameplayAttributeData& OldShield)
