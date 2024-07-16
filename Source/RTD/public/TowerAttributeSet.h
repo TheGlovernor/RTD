@@ -182,6 +182,10 @@ public:
     FGameplayAttributeData BountyMultiplier = 0.0;
     ATTRIBUTE_ACCESSORS(UTowerAttributeSet, BountyMultiplier)
 
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_ItemChanceMultiplier)
+    FGameplayAttributeData ItemChanceMultiplier = 1.0;
+    ATTRIBUTE_ACCESSORS(UTowerAttributeSet, ItemChanceMultiplier)
+
 protected:
     
     UFUNCTION()
@@ -303,4 +307,7 @@ protected:
 
     UFUNCTION()
     virtual void OnRep_BountyMultiplier(const FGameplayAttributeData& OldBountyMultiplier);
+
+    UFUNCTION()
+    virtual void OnRep_ItemChanceMultiplier(const FGameplayAttributeData& OldItemChanceMultiplier);
 };

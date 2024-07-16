@@ -135,6 +135,8 @@ void UTowerAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
     DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, ExplosionRadius, COND_None, REPNOTIFY_Always);
 
     DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, BountyMultiplier, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, ItemChanceMultiplier, COND_None, REPNOTIFY_Always);
 }
 
 void UTowerAttributeSet::OnRep_Level(const FGameplayAttributeData& OldLevel)
@@ -336,8 +338,12 @@ void UTowerAttributeSet::OnRep_ExplosionRadius(const FGameplayAttributeData& Old
     GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, ExplosionRadius, OldExplosionRadius);
 }
 
-
 void UTowerAttributeSet::OnRep_BountyMultiplier(const FGameplayAttributeData& OldBountyMultiplier)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, BountyMultiplier, OldBountyMultiplier);
+}
+
+void UTowerAttributeSet::OnRep_ItemChanceMultiplier(const FGameplayAttributeData& OldItemChanceMultiplier)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, ItemChanceMultiplier, OldItemChanceMultiplier);
 }
