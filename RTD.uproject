@@ -66,6 +66,14 @@
 		{
 			"Name": "StaticMeshEditorModeling",
 			"Enabled": true
+		},
+		{
+			"Name": "OnlineSubsystemSteam",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineFramework",
+			"Enabled": true
 		}
 	],
 	"TargetPlatforms": [
