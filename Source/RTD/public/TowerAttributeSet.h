@@ -44,7 +44,11 @@ public:
     
     UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_MaxTargets)
     FGameplayAttributeData MaxTargets = 1.0;
-    ATTRIBUTE_ACCESSORS(UTowerAttributeSet, MaxTargets)    
+    ATTRIBUTE_ACCESSORS(UTowerAttributeSet, MaxTargets)        
+    
+    UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_ShieldDamage)
+    FGameplayAttributeData ShieldDamage = 1.0;
+    ATTRIBUTE_ACCESSORS(UTowerAttributeSet, ShieldDamage)
     
     UPROPERTY(BlueprintReadOnly, Category = "", ReplicatedUsing = OnRep_EffectPower)
     FGameplayAttributeData EffectPower = 0.0;
@@ -205,6 +209,9 @@ protected:
 
     UFUNCTION()
     virtual void OnRep_MaxTargets(const FGameplayAttributeData& OldMaxTargets);
+
+    UFUNCTION()
+    virtual void OnRep_ShieldDamage(const FGameplayAttributeData& OldShieldDamage);
 
     UFUNCTION()
     virtual void OnRep_EffectPower(const FGameplayAttributeData& OldEffectPower);
