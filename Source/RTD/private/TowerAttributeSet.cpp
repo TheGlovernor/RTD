@@ -68,6 +68,8 @@ void UTowerAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
     
     DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, MaxTargets, COND_None, REPNOTIFY_Always);
     
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, ShieldDamage, COND_None, REPNOTIFY_Always);
+    
     DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, EffectPower, COND_None, REPNOTIFY_Always);
 
     DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, EffectChance, COND_None, REPNOTIFY_Always);
@@ -135,6 +137,8 @@ void UTowerAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
     DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, ExplosionRadius, COND_None, REPNOTIFY_Always);
 
     DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, BountyMultiplier, COND_None, REPNOTIFY_Always);
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UTowerAttributeSet, ItemChanceMultiplier, COND_None, REPNOTIFY_Always);
 }
 
 void UTowerAttributeSet::OnRep_Level(const FGameplayAttributeData& OldLevel)
@@ -165,6 +169,11 @@ void UTowerAttributeSet::OnRep_CurrentTargets(const FGameplayAttributeData& OldC
 void UTowerAttributeSet::OnRep_MaxTargets(const FGameplayAttributeData& OldMaxTargets)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, MaxTargets, OldMaxTargets);
+}
+
+void UTowerAttributeSet::OnRep_ShieldDamage(const FGameplayAttributeData& OldShieldDamage)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, ShieldDamage, OldShieldDamage);
 }
 
 void UTowerAttributeSet::OnRep_EffectPower(const FGameplayAttributeData& OldEffectPower)
@@ -336,8 +345,12 @@ void UTowerAttributeSet::OnRep_ExplosionRadius(const FGameplayAttributeData& Old
     GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, ExplosionRadius, OldExplosionRadius);
 }
 
-
 void UTowerAttributeSet::OnRep_BountyMultiplier(const FGameplayAttributeData& OldBountyMultiplier)
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, BountyMultiplier, OldBountyMultiplier);
+}
+
+void UTowerAttributeSet::OnRep_ItemChanceMultiplier(const FGameplayAttributeData& OldItemChanceMultiplier)
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UTowerAttributeSet, ItemChanceMultiplier, OldItemChanceMultiplier);
 }
